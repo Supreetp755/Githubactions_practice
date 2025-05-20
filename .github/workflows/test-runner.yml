@@ -1,0 +1,19 @@
+name: Simple Command Runner
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-commands:
+    runs-on: ubuntuvm  # Custom label for your self-hosted runner
+
+    steps:
+      - name: Print greeting
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Show current date and time
+        run: date
+
+      - name: List files in repo
+        run: ls -la
