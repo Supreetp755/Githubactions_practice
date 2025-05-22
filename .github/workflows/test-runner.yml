@@ -20,4 +20,19 @@ jobs:
       - name: Docker image check
         run: |
           docker images
-          
+
+      - name: Docker image build
+        run: |
+          docker build -t cpp-image:01 .
+
+      - name: Docker image Check
+        run: |
+          docker images
+
+      - name: Docker run container
+        run: |
+          docker run --rm ccp-container
+
+      - name: docker container run
+        run: | 
+          docker ps -a
