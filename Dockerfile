@@ -1,14 +1,14 @@
-# Use official Node.js image
-FROM node:18
+# Stage 1: Build
+FROM gcc:12 AS builder
 
-# Create app directory
 WORKDIR /app
+COPY hello.cpp .
+RUN g++ -o hello hello.cpp
 
-# Install dependencies
-RUN npm install
+# Stage 2: Run
+FROM debian:bullseye-slim
 
-# Copy the rest of the source code
-COPY . .
+WORKDIR /app
+COPY --from=builder /app/hello .
 
-# Run the app
-CMD ["node", "index.js"]
+CMD ["./hello"]
