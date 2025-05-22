@@ -31,7 +31,7 @@ jobs:
 
       - name: Docker run container
         run: |
-          docker run --rm ccp-container
+          docker run -d --rm name container1 cpp-image:01
 
       - name: docker container run
         run: | 
